@@ -5,9 +5,21 @@ class Employee():
     def __init__(self, name, surname, age):
         self.name = name
         self.surname = surname
-        self.age = age
-        self.email = f"{name}.{surname}@gmail.com"
+        self.__age = age #private property
+        #self.email = f"{name}.{surname}@gmail.com"
         self.plata = 18000
+
+    @property
+    def age(self):
+        return self.__age
+
+    @age.setter
+    def age(self, new_age):
+        self.__age = new_age
+
+    @property
+    def email(self):
+        return f"{self.name}.{self.surname}@gmail.com"
 
     def zgolemi_plata(self):
         self.plata = self.plata * self.procent_na_zgolemuvanje
@@ -75,3 +87,12 @@ manager1 = Manager("zare", "prezime", 40, list_developers)
 manager1.remove_developer(developer1)
 manager1.print_developers()
 print(manager1)
+
+employee5 = Employee("nenad", "jov", 42)
+print(employee5)
+employee5.name = "goce"
+print(employee5.email)
+
+print(employee5.age)
+employee5.age = 18
+print(employee5.age)
